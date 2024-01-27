@@ -7,7 +7,12 @@ equal.addEventListener("click", calculateResult)
 
 buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
-        if(btn.value !== "=") {
+        let numericValues = result.value.match(/(\d+(\.\d+)?|[+\-*/])/g);
+        if (btn.value == ".") {
+            if (!numericValues[numericValues.length - 1].includes(".")) {
+                result.value += btn.value;
+            }
+        }else if (btn.value !== "=") {
             result.value += btn.value;
         }
     })
@@ -27,5 +32,5 @@ backspace.addEventListener("click", () => {
 
 function calculateResult() {
     console.log(result.value)
-    result.value = eval(result.value)
+    result.value = eval(result.value).toFixed(2)
 }
