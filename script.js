@@ -31,6 +31,5 @@ backspace.addEventListener("click", () => {
 
 
 function calculateResult() {
-    console.log(result.value)
     result.value = eval(result.value).toFixed(2)
 }
